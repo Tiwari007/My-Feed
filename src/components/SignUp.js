@@ -5,8 +5,11 @@ const Signup = () => {
   const [password, setPassword] = useState('');
 
   const handleSignup = () => {
+
+    const savedUser = JSON.parse(localStorage.getItem("users"))
+    const users = [ ...savedUser , {username, password} ]
     // Save user data to local storage
-    localStorage.setItem('user', JSON.stringify({ username, password }));
+    localStorage.setItem('users', JSON.stringify(users));
   };
 
   return (

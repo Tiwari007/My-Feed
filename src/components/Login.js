@@ -12,10 +12,11 @@ const Login = () => {
 
   const handleLogin = () => {
     // Check if user exists in local storage
-    const savedUser = JSON.parse(localStorage.getItem('user'));
-    if (savedUser && savedUser.username === username && savedUser.password === password) {
-      // User is authenticated, you can set a state variable or redirect them.
-      localStorage.setItem("currentUser", username)
+    const users = JSON.parse(localStorage.getItem("users"))
+    const isUserExist = users?.filter(user => user.username === username && user.password === password)
+    console.log("userExist: ", isUserExist)
+    if (isUserExist) {
+      localStorage.setItem("currentUser", isUserExist[0]?.username)
       navigate('/')
     } else {
       // Invalid login

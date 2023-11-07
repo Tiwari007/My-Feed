@@ -16,7 +16,7 @@ function App() {
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users))
     localStorage.setItem("posts", JSON.stringify(posts))
-  }, [])
+  })
 
   return (
     <Router>
