@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
+import { useDispatch } from 'react-redux';
+import { deletePost } from '../redux/posts/postSlice';
 
 
 const Feed = () => {
@@ -8,13 +10,14 @@ const Feed = () => {
   const [likedStatus, setLikesStatus] = useState(false)
   const [currentUser, setCurrentUser] = useState("")
 
-
+  const dispatch = useDispatch()
   const posts = useSelector(state => state.posts)
-
+  
+    
   useEffect(() => {
-    setCurrentUser(localStorage.getItem("currentUser"))
     setUserPosts(posts);
-  }, [posts, currentUser]);
+    setCurrentUser(localStorage.getItem("currentUser"))
+  }, [posts]);
 
   const likedHandler = (post) => {
     setLikesStatus(!likedStatus)
@@ -31,15 +34,16 @@ const Feed = () => {
       <Link to="postform"><button className='px-2 py-1 bg-red-500 text-white rounded'>POST MESSAGE ➕</button></Link>
       </div>
       <div className="flex flex-col items-center">
-        {userPosts && userPosts?.map((post, index) => (
-          <div className="feed bg-white text-blue-950 mt-10 p-4 rounded-lg w-3/4" key={index}>
+        {userPosts && userPosts?.map((post) => (
+          <div className="feed bg-white text-blue-950 mt-10 p-4 rounded-lg w-3/4" key={post.id}>
             <div className="flex items-center mb-2">
               <strong>{post.author}</strong>
               { post.author !== currentUser && <button className="px-2 py-1 bg-blue-500 text-white rounded text-xl ml-2">Follow</button> }
+              { post.author === currentUser && <button className="px-2 py-1 bg-blue-500 text-white rounded text-xl ml-2" onClick={() => dispatch(deletePost(post.id))}>DELETE</button> }
             </div>
             <div className="text-base h-32 m-4">{post.message}</div>
             <div className="flex mt-2 gap-4">
-              <button className="px-2 py-1 bg-red-500 text-white rounded" onClick={() => likedHandler(post, index)}>{post.totalLikes} {likedStatus ? 'Liked' : 'Like'} </button>
+              <button className="px-2 py-1 bg-red-500 text-white rounded" onClick={() => likedHandler(post)}>{post.totalLikes} {likedStatus ? 'Liked' : 'Like'} </button>
               <button className="px-2 py-1 bg-green-500 text-white rounded">Comment</button>
             </div>
             <div className='bg-gray-500 mt-2'>
