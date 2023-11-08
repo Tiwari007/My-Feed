@@ -13,7 +13,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="w-64 mx-auto mt-16">
+    <div className="max-w-md mx-auto mt-10 p-4 bg-white rounded-lg shadow-md text-black text-center">
       <h2 className="text-2xl font-bold mb-4">Sign Up</h2>
       <input
         type="text"

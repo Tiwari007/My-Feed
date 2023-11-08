@@ -37,6 +37,7 @@ export const users = [
 
 export const posts = [
   {
+    id: 0,
     author: "Bucky",
     message: "Hey Let's Connect",
     totalLikes: 10,
@@ -52,6 +53,7 @@ export const posts = [
     ]
   },
   {
+    id: 1,
     author: "Vivek",
     message: "Hey Its Dev Day",
     totalLikes: 99,

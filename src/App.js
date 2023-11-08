@@ -24,7 +24,7 @@ function App() {
         <Header />
         <Routes>
           <Route exact path="/" element={<Feed />} />
-          <Route path="/post" element={<PostForm />} />
+          <Route path="/postform" element={<PostForm />} />
           <Route path="/users" element={<Users />} />
           <Route path="/login" element={<Login />} />
           <Route path="/signup" element={<Signup />} />

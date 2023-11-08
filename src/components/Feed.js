@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const Feed = () => {
   const [userPosts, setUserPosts] = useState();
@@ -22,9 +23,12 @@ const Feed = () => {
 
   return (
     <div className="text-2xl text-center mt-10">
-      <h2 className="text-4xl text-gray-600 m-5">News Feeds</h2>
+      <div className='flex justify-between items-center m-4'>
+      <h2 className="text-5xl text-gray m-5">News Feeds</h2>
+      <Link to="postform"><button className='px-2 py-1 bg-red-500 text-white rounded'>POST MESSAGE ➕</button></Link>
+      </div>
       <div className="flex flex-col items-center">
-        {userPosts?.map((post, index) => (
+        {userPosts && userPosts?.map((post, index) => (
           <div className="feed bg-white text-blue-950 mt-10 p-4 rounded-lg w-3/4" key={index}>
             <div className="flex items-center mb-2">
               <strong>{post.author}</strong>

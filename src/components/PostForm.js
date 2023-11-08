@@ -1,19 +1,30 @@
 // Post.js
 import React, { useState } from 'react';
-import { posts } from '../data';
+// import { posts } from '../data';
 
 const PostForm = () => {
   const [message, setMessage] = useState('');
-  const [userPosts, setUsersPosts] = useState(posts)
+  // const [userPosts, setUsersPosts] = useState(posts)
 
   const handlePost = () => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const currentUser = localStorage.getItem('currentUser');
+    const allPosts = JSON.parse(localStorage.getItem('posts'))
 
-    if (user) {
-      const posts = JSON.parse(localStorage.getItem('posts')) || [];
-      posts.push({ username: user.username, message });
-      localStorage.setItem('posts', JSON.stringify(posts));
+    if (currentUser) {
+      let post = [{
+        id: Math.random().toString(36).substring(2, 8),
+        author: currentUser,
+        message: message,
+        totalLikes: 0,
+        comments: []
+      }]
+      let updatedPost = { ...allPosts, ...post }
+      localStorage.setItem('posts', JSON.stringify(updatedPost));
       setMessage('');
+    }
+    else{
+      // UnAuthorized
+      alert("You need to Login First")
     }
   };
 
