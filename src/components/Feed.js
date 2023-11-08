@@ -1,19 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux/es/hooks/useSelector';
+
 
 const Feed = () => {
   const [userPosts, setUserPosts] = useState();
   const [likedStatus, setLikesStatus] = useState(false)
   const [currentUser, setCurrentUser] = useState("")
 
-  useEffect(() => {
-    // Fetch posts from local storage
-    const savedPosts = JSON.parse(localStorage.getItem('posts')) || [];
-    setCurrentUser(localStorage.getItem("currentUser"))
-    setUserPosts(savedPosts);
-  }, []);
 
-  const likedHandler = (post, index) => {
+  const posts = useSelector(state => state.posts)
+
+  useEffect(() => {
+    setCurrentUser(localStorage.getItem("currentUser"))
+    setUserPosts(posts);
+  }, [posts, currentUser]);
+
+  const likedHandler = (post) => {
     setLikesStatus(!likedStatus)
     const filteredPost = { ...post, totalLikes: post.totalLikes + 1 }
     console.log("filteredPost: ", filteredPost)

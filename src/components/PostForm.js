@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { addPost } from '../redux/posts/postSlice';
 
 const PostForm = () => {
   const [message, setMessage] = useState('');
-  // const [userPosts, setUsersPosts] = useState(posts)
+
+  const dispatch = useDispatch()
 
   const handlePost = () => {
     const currentUser = localStorage.getItem('currentUser');
-    // const allPosts = JSON.parse(localStorage.getItem('posts'))
 
     if (currentUser) {
       let post = [
@@ -19,8 +21,7 @@ const PostForm = () => {
         },
       ];
       console.log("post: ", post)
-      // let updatedPost = { ...allPosts, ...post }
-      // localStorage.setItem('posts', JSON.stringify(updatedPost));
+      dispatch(addPost(post))
 
       setMessage('');
       alert('Your Post Successfully Added');
