@@ -45,7 +45,7 @@ export const postSlice = createSlice({
             const post = {
                 id: nanoid(),
                 author: "Bucky",
-                message: action.payload,
+                message: "random",
                 totalLikes: 0,
                 comments: [],
             };
