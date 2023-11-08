@@ -6,7 +6,7 @@ import Login from './components/Login';
 import PostForm from './components/PostForm';
 import Signup from './components/SignUp';
 import Logout from './components/Logout';
-import { posts, users } from './data';
+import { users } from './data';
 import Users from './components/Users';
 
 function App() {
@@ -15,7 +15,6 @@ function App() {
   // Let's save all the initial data (sample) to local storage
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users))
-    localStorage.setItem("posts", JSON.stringify(posts))
   })
 
   return (

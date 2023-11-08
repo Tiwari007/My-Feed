@@ -30,43 +30,11 @@ export const users = [
   {
     username: "Eren",
     password: "12345"
-  }
-  
-]
-
-
-export const posts = [
-  {
-    id: 0,
-    author: "Bucky",
-    message: "Hey Let's Connect",
-    totalLikes: 10,
-    comments: [
-      {
-        author: "Vivek",
-        commentMessage: "Sure"
-      },
-      {
-        author: "Vicky",
-        commentMessage: "Excited"
-      }
-    ]
   },
   {
-    id: 1,
-    author: "Vivek",
-    message: "Hey Its Dev Day",
-    totalLikes: 99,
-    comments: [
-      {
-        author: "Bucky",
-        commentMessage: "Indeed"
-      },
-      {
-        author: "Vicky",
-        commentMessage: "Excited"
-      }
-    ]
+    username: "guest",
+    password: "12345"
   }
-]
   
+]
+

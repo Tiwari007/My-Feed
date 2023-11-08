@@ -26,7 +26,10 @@ const PostForm = () => {
       setMessage('');
       alert('Your Post Successfully Added');
     } else {
-      alert('You need to Login First');
+      alert(`You need to Login First.
+      Use Username: guest
+      Password: 12345
+      `);
     }
   };
 
@@ -38,7 +41,7 @@ const PostForm = () => {
         placeholder="Message"
         value={message}
         onChange={(e) => setMessage(e.target.value)}
-        className="w-full p-2 border border-gray-300 rounded-md mb-2"
+        className="w-full p-2 border border-gray-300 rounded-md mb-2 text-black"
       />
       <button
         onClick={handlePost}

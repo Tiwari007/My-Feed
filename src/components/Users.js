@@ -23,7 +23,10 @@ const Users = () => {
       alert(`You Followed ${user.username}`)
     }
     else{
-      alert("You Need to Login First")
+      alert(`You need to Login First.
+      Use Username: guest
+      Password: 12345
+      `);
     }
   }
 

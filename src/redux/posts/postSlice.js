@@ -18,22 +18,22 @@ const initialState = {
                 },
             ],
         },
-        {
-            id: 1,
-            author: "Vivek",
-            message: "Hey Its Dev Day",
-            totalLikes: 99,
-            comments: [
-                {
-                    author: "Bucky",
-                    commentMessage: "Indeed",
-                },
-                {
-                    author: "Vicky",
-                    commentMessage: "Excited",
-                },
-            ],
-        },
+        // {
+        //     id: 1,
+        //     author: "Vivek",
+        //     message: "Hey Its Dev Day",
+        //     totalLikes: 99,
+        //     comments: [
+        //         {
+        //             author: "Bucky",
+        //             commentMessage: "Indeed",
+        //         },
+        //         {
+        //             author: "Vicky",
+        //             commentMessage: "Excited",
+        //         },
+        //     ],
+        // },
     ],
 };
 
