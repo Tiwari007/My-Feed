@@ -4,6 +4,7 @@ const Users = () => {
     const [users, setUsers] = useState([])
   const [filteredUsers, setFilteredUsers] = useState([]);
   const [currentUser, setCurrentUser] = useState("")
+  let debounceTimer;
 
   useEffect(() => {
     // Fetch posts from local storage
@@ -32,11 +33,26 @@ const Users = () => {
 
   console.log("userPosts: ", filteredUsers)
 
+  const handleSearchUser = (e) => {
+    // setFilteredUsers(users.filter(user => user.username.toLowerCase().includes(e.target.value.toLowerCase()))
+
+    const searchValue = e.target.value.toLowerCase();
+
+    clearTimeout(debounceTimer);
+
+    debounceTimer = setTimeout(() => {
+      const filteredUsers = users.filter(user => user.username.toLowerCase().includes(searchValue));
+      setFilteredUsers(filteredUsers);
+    }, 1000);
+
+
+  }
+
   return (
     <div className="text-2xl text-center mt-10">
         <div className='text-center mt-6 flex justify-around'>
             <h2 className="text-3xl text-gray-600 m-5">USERS</h2>
-            <input type='text' placeholder='Search User' className='p-4 text-black' onChange={(e) => setFilteredUsers(users.filter(user => user.username.toLowerCase().includes(e.target.value.toLowerCase())))}/>
+            <input type='text' placeholder='Search User' className='p-4 text-black' onChange={handleSearchUser}/>
         </div>
       
       <div className="flex flex-col items-center">

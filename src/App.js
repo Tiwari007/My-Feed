@@ -10,8 +10,6 @@ import { users } from './data';
 import Users from './components/Users';
 
 function App() {
-
-
   // Let's save all the initial data (sample) to local storage
   useEffect(() => {
     localStorage.setItem("users", JSON.stringify(users))
