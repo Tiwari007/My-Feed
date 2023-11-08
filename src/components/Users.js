@@ -12,7 +12,7 @@ const Users = () => {
     const tempUsers = allUsers.filter(user => user.username !== currentUser)
     setUsers(tempUsers)
     setFilteredUsers(tempUsers);
-  }, []);
+  }, [currentUser]);
 
 
   console.log("users: ", users, currentUser)
